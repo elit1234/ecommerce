@@ -1,0 +1,143 @@
+:root {
+  --colour-primary: #000;
+  --colour-secondary: #d42323;
+  --colour-third: #1b202c;
+  --colour-contrast-text: #fff;
+  --colour-grey: #c7c3c3;
+}
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+  max-width: 100vw;
+  background: var(--colour-grey-onepu);
+}
+
+body {
+  font-family: "Avenir", sans-serif !important;
+  color: var(--colour-primary);
+}
+
+/* AVENIR FONT */
+
+@font-face {
+  font-family: "Avenir";
+  src: url("/fonts/avenir/AvenirNextW05-Medium.woff2") format("woff2"),
+    url("/fonts/avenir/AvenirNextW05-Medium.woff") format("woff");
+  font-weight: normal;
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: "Avenir";
+  src: url("/fonts/avenir/AvenirNextW05-Demi.woff2") format("woff2"),
+    url("/fonts/avenir/AvenirNextW05-Demi.woff") format("woff");
+  font-weight: 600;
+
+  font-display: fallback;
+}
+
+.pageDots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.pageDot {
+  background: var(--colour-grey);
+  width: 20px;
+  height: 5px;
+  border-radius: 5px;
+}
+
+.pageDotActive {
+  background: var(--colour-secondary);
+}
+
+/* TOP AND BOTTOM AREA NAV */
+
+.topArea {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-template-columns: 1fr 80px;
+  grid-template-rows: 1fr 1fr;
+  gap: 5px 0px;
+  grid-template-areas:
+    "deliverTo icon"
+    "areaName icon";
+  height: 80px;
+  align-items: center;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #fff;
+  z-index: 1;
+  width: 100%;
+}
+
+.topArea :nth-child(1) {
+  grid-area: deliverTo;
+  margin-bottom: 0;
+  margin-top: auto;
+  color: var(--colour-secondary);
+}
+
+.topArea :nth-child(1),
+.topArea :nth-child(2) {
+  padding-left: 20px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.topArea :nth-child(2) {
+  grid-area: areaName;
+  margin-top: 0;
+  margin-bottom: auto;
+}
+
+.topArea svg {
+  grid-area: icon;
+  justify-self: center;
+}
+
+.bottomArea {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: #fff;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px -2px 8px 0px;
+  z-index: 1;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.bottomAreaOption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  width: 100%;
+  text-decoration: none;
+  color: var(--colour-primary);
+}
+
+.bottomAreaOptionActive {
+  color: var(--colour-secondary);
+}
+
+.bottomAreaOptionActive svg {
+  fill: var(--colour-secondary);
+}

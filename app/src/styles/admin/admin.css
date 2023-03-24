@@ -1,0 +1,170 @@
+.adminPadding {
+  padding-top: 60px;
+  transition: padding-left 0.2s ease-in-out;
+}
+
+.topBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: var(--colour-third);
+  color: var(--colour-contrast-text);
+  display: grid;
+  grid-template-columns: 80px 1fr 80px;
+  text-align: center;
+  align-items: center;
+  z-index: 2;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.topBar svg {
+  fill: var(--colour-contrast-text);
+  margin: 0 auto;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
+
+/* **** Sidebar **** */
+
+.sideBar {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  max-width: 350px;
+  height: calc(100vh - 60px);
+  background-color: var(--colour-third);
+  color: var(--colour-contrast-text);
+  z-index: 3;
+  transition: transform 0.2s ease-in-out, max-width 0.2s ease-in-out;
+  transform: translateX(-110%);
+}
+
+.sideBar-open {
+  transform: translateX(0px);
+}
+
+.sideBarOption svg {
+  fill: var(--colour-contrast-text);
+  transition: fill 0.2s ease-in-out;
+  width: 25px;
+  height: 25px;
+}
+
+.sideBarOption {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  align-items: center;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  text-decoration: none;
+  color: var(--colour-contrast-text);
+}
+
+.sideBarOption:hover,
+.sideBarOptionActive {
+  background-color: var(--colour-contrast-text);
+  color: var(--colour-third);
+}
+
+.sideBarOption:hover svg,
+.sideBarOptionActive svg {
+  fill: var(--colour-third);
+}
+
+.sideBarOptionActive {
+  font-weight: bold;
+}
+
+.line1,
+.line2,
+.line3 {
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+.line1-open {
+  transform: rotate(45deg) translate(2px, -4px);
+}
+
+.line2-open {
+  opacity: 0;
+}
+
+.line3-open {
+  transform: rotate(-45deg) translate(-17px, -10px);
+}
+
+.userProfileDropdown {
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin: 60px 20px 0 0;
+  height: 90px;
+  width: 250px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 10px;
+  padding: 10px;
+  background: var(--colour-third);
+  transition: transform 0.2s ease-in-out;
+  transform: translateY(-100%);
+}
+
+.userProfileDropdown-open {
+  transform: translateY(0px);
+}
+
+.userProfileDropdown a {
+  text-decoration: none;
+  color: var(--colour-contrast-text);
+}
+
+.userProfileDropdown a:hover {
+  text-decoration: underline;
+}
+
+@media screen and (min-width: 1200px) {
+  .sideBar {
+    transform: translateX(0px);
+    max-width: 80px;
+    top: 80px;
+  }
+
+  .sidebarOptionName {
+    display: none;
+  }
+
+  .sideBar:hover {
+    max-width: 350px;
+  }
+  .sideBar:hover .sidebarOptionName {
+    display: block;
+  }
+
+  .sideBar:hover ~ .adminPadding {
+    padding-left: 350px !important;
+  }
+
+  .adminPadding {
+    padding-top: 80px;
+    padding-left: 80px;
+  }
+
+  .menuIcon {
+    display: none;
+  }
+  .topBar {
+    grid-template-columns: 1fr 80px;
+    height: 80px;
+  }
+  .userProfileDropdown {
+    margin: 80px 20px 0 0;
+  }
+}

@@ -1,0 +1,60 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  // We set an `id` variable
+  // With an `Int` type (number)
+  // Then, we set the Prisma decorators:
+  // - @id (because it's an ID)
+  // - @default(autoincrement()) (default value is auto-incremented)
+  id Int @id @default(autoincrement())
+
+  // We set an `email` variable
+  // With a `String` type
+  // Then, we set the Prisma decorator:
+  // - @unique (because we want the user to be unique
+  // based on the email - two users can't have the same)
+  email String @unique
+
+  // We set a `username` variable
+  // With a `String` type
+  password String
+
+  // We set a `tweets` variable
+  // With a `Tweet[]` type (one-to-many relationship)
+  // Because each user can have between
+  // 0 and an infinite number of tweets
+}
+
+model Item {
+  id           Int            @id @default(autoincrement())
+  name         String
+  description  String
+  price        Int
+  image        String
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  isFeatured   Boolean        @default(false)
+  isAvailable  Boolean        @default(true)
+  categoryIds  Int[]
+}
+
+model Category {
+  id           Int            @id @default(autoincrement())
+  name         String
+  description  String
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  position     Int
+  isHomePage Boolean @default(false)
+  homePagePosition Int @default(0)
+}
